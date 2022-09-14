@@ -8,7 +8,7 @@ import * as yup from 'yup';
 const schema= yup.object().shape(
     {
         email: yup.string().required('Please enter a valid email address'),
-        password: yup.string().required('Please enter password').matches("^(?=.*[A-Za-z])(?=.*)(?=.*[@$!%*#?&])[A-Za-z@$!%*#?&]{8,}$"),
+        password: yup.string().required('Please enter password').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,'Min 8 characters.'),
     }
 )
 
