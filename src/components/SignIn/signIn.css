@@ -1,0 +1,77 @@
+@font-face {
+    src: url("../fonts/Romantic Couple.ttf");
+    font-family: romantic;
+}
+.log-cont {
+    height: 500px;
+    display: flex;
+    margin: 50px;
+}
+.cont-1 {
+    background: linear-gradient( to right, rgb(0, 0, 0), rgb(54, 52, 52)) ;
+    color: #fff; 
+    flex: 50%; 
+    text-align: left;
+    padding: 50px;
+    border-radius:20px 0 0 20px;
+}
+.header {
+    font-size: 4.5em;
+    font-family: romantic;
+}
+.pg {
+    font-size: .9em;
+}
+.pg1 {
+    font-size: .9em;
+    margin-top: 40px;
+}
+.btn1 {
+    background-color: rgb(66, 64, 64);
+    color:#fff;
+    padding: 10px;
+    border-radius: 20px;
+    width: 30% 
+}
+
+.cont-2 {
+   padding:  10px 50px;
+   flex: 50%;
+   background: rgb(224, 222, 222);
+   border-radius:0 20px 20px 0;
+}
+.head1 {
+    font-size: 3em;
+    font-family: romantic;
+    margin-top: 30px;
+}
+.form {
+    margin-top: 40px;
+}
+input {
+    border-radius: 20px;
+    padding: 20px;
+    float: left;
+    width: 80%;
+    outline: none;
+    border: none;
+    margin-top: 10px;
+}
+label {
+    text-transform: uppercase;
+    font-size: .8em;
+    font-weight: bold;
+    float: left;   
+}
+.sign-btn {
+    background-color: rgb(27, 26, 26);
+    color:#fff;
+    padding: 15px;
+    border-radius: 25px;
+    width: 30%;
+  
+}
+.but {
+    margin-top: 60px;
+}
+ 
