@@ -74,4 +74,9 @@ label {
 .but {
     margin-top: 60px;
 }
+.message {
+    color: red;
+    font-size: .8em;
+    float:left;
+}
  

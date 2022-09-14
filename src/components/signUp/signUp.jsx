@@ -1,7 +1,26 @@
 import React from 'react';
 import '../signUp/signUp.css';
+import content from '../static';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
+const schema= yup.object().shape(
+    {
+        firstname: yup.string().required().min(6),
+        lastname: yup.string().required().min(6),
+        email: yup.string().required('Please enter a valid email address'),
+        password: yup.string().required('Please enter password').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,'Min 8 characters.'),
+    }
+)
 function SignUp() {
+    const {register, handleSubmit, formState: { errors }}= useForm(
+        {
+            resolver: yupResolver(schema),
+        }
+    );
+
+    const onSubmit = (data) => console.log(data)
     return ( 
         <>
         <div className='chat-cont'>
@@ -16,23 +35,17 @@ function SignUp() {
             </div>
             <div className='cont-2'>
                 <h2 className='head'>Don't have an account?<br/> Sign Up now!!</h2>
-                <form>
-                    <div className='form'>
-                    <label>first name</label><br/>
-                    <input type='text' required/><br/>
-                    </div>
-                    <div className='form'>
-                    <label>Last name</label><br/>
-                    <input type='text' required/><br/>
-                    </div>
-                    <div className='form'>
-                    <label>E-mail</label><br/>
-                    <input type='text' required /><br/>
-                    </div>
-                    <div className='form'>
-                    <label>Password</label><br/>
-                    <input type='password' required/><br/>
-                    </div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    {content.inputs.map((input, key) => {
+                        return (
+                            <div className= 'form'key={key}>
+                                <label>{input.label}</label><br/>
+                                <input type={input.type} {...register(input.name)} /><br />
+                                <span className='message'>{errors[input.name]?.message}</span>
+                            </div>
+                            
+                        )
+                    })}
                     <div className='but'>
                     <button type='submit' className='btn'>Sign up</button>
                     </div>

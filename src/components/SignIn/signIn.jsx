@@ -1,7 +1,25 @@
 import React from 'react';
 import '../SignIn/signIn.css';
+import content2 from '../static/index2';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema= yup.object().shape(
+    {
+        email: yup.string().required('Please enter a valid email address'),
+        password: yup.string().required('Please enter password').matches("^(?=.*[A-Za-z])(?=.*)(?=.*[@$!%*#?&])[A-Za-z@$!%*#?&]{8,}$"),
+    }
+)
 
 function SignIn() {
+    const {register, handleSubmit, formState:{ errors }}= useForm(
+        {
+            resolver: yupResolver(schema),
+        }
+    );
+
+    const onSubmit = (data) => console.log(data)
     return ( 
         <>
         <div className='log-cont'>
@@ -14,15 +32,17 @@ function SignIn() {
             </div>
             <div className='cont-2'>
             <h2 className='head1'>Sign In to ChatScrum...</h2>
-                <form>
-                    <div className='form'>
-                    <label>E-mail</label><br/>
-                    <input type='text' required /><br/>
-                    </div>
-                    <div className='form'>
-                    <label>Password</label><br/>
-                    <input type='password' required/><br/>
-                    </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                {content2.inputs.map((input, key) => {
+                        return (
+                            <div className= 'form'key={key}>
+                                <label>{input.label}</label><br/>
+                                <input type={input.type} {...register(input.name)} /><br/>
+                                <br/><span className='message'>{errors[input.name]?.message}</span>
+                            </div>
+                            
+                        )
+                    })}
                     <div className='but'>
                     <button type='submit' className='sign-btn'>Sign In</button>
                     </div>
