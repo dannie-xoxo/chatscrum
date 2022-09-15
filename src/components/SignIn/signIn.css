@@ -75,8 +75,8 @@ label {
     margin-top: 60px;
 }
 .message {
-    color: red;
-    font-size: .8em;
+    color: rgb(240, 56, 56);
+    font-size: .7em;
     float:left;
 }
  

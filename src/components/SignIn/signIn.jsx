@@ -8,7 +8,7 @@ import * as yup from 'yup';
 const schema= yup.object().shape(
     {
         email: yup.string().required('Please enter a valid email address'),
-        password: yup.string().required('Please enter password').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,'Min 8 characters.'),
+        password: yup.string().required('Please enter password').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,'Minimum eight characters,at least one letter, one number and one special character:'),
     }
 )
 
@@ -38,7 +38,7 @@ function SignIn() {
                             <div className= 'form'key={key}>
                                 <label>{input.label}</label><br/>
                                 <input type={input.type} {...register(input.name)} /><br/>
-                                <br/><span className='message'>{errors[input.name]?.message}</span>
+                                <span className='message'>{errors[input.name]?.message}</span>
                             </div>
                             
                         )

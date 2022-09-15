@@ -7,10 +7,10 @@ import * as yup from 'yup';
 
 const schema= yup.object().shape(
     {
-        firstname: yup.string().required().min(6),
-        lastname: yup.string().required().min(6),
+        firstname: yup.string().required().min(5),
+        lastname: yup.string().required().min(5),
         email: yup.string().required('Please enter a valid email address'),
-        password: yup.string().required('Please enter password').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,'Min 8 characters.'),
+        password: yup.string().required('Please enter password').matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,'Minimum eight characters,at least one letter, one number and one special character:'),
     }
 )
 function SignUp() {
